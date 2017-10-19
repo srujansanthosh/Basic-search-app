@@ -1,4 +1,4 @@
-# Simple Patient Search Starter Project
+# Simple Patient Search Application in Ember
 
 This is a simple search application over a set of patient records.
 
