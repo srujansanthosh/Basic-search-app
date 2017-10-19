@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Basic Patient Search</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//builds.emberjs.com/tags/v2.12.0/ember-template-compiler.js"></script>
+    <script src="//builds.emberjs.com/tags/v2.12.0/ember.debug.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="panel">
+    <div class="header panel-heading">
+        <a href="http://www.qpidhealth.com"><img src="http://www.qpidhealth.com/wp-content/uploads/logo2016r.png?x47955"
+                                                 alt="QPID HEALTH" class="img-fluid" width="420px" height="100px"></img></a>
+        <h1 class="display-1">Coding Challenge<span><small class="lead display-2"> &nbsp; UI Developer</small></span></h1>
+    </div>
+</div>
+
+<div class="container-head well well-sm panel panel-default"><h2 class="display-3"> Patient Search Application</h2></div>
+
+<script type="text/x-handlebars">
+    {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+
+    <div class="container-head"><strong>SEARCH  &nbsp; </strong>{{input value=searchText placeholder="Enter Here" key-press="doSearch"}}</div>
+
+    <!--HIT ENTER AFTER THE SEARCH -->
+
+    {{#if searchText}}
+
+    {{#each results as |patient|}}
+
+    <div class="container">
+        <h2><mark>{{patient.name}}</mark></h2>
+        {{#each patient.documents as |document|}}
+        <br>
+        <div class="content">
+            <pre><div>{{document.title}}</div>                                            
+                 <div>{{document.date}}</div>
+                 {{document.contents}}</pre>    
+                                                    
+        </div>
+        <br>
+        <hr>
+        {{/each}}
+        <hr>
+    </div>
+
+    {{else}}
+
+    <div class="message">
+        <p>Sorry, No search results for <mark>{{searchText}}</mark></p>
+    </div>
+
+    {{/each}}
+
+    {{else}}
+    <div class="message">
+        Please enter a search above.
+    </div>
+    <hr>
+    {{/if}}
+
+</script>
+
+<footer class="footer">
+    <section id="lab_social_icon_footer">
+        <div class="container">
+            <div class="text-center center-block">
+                <p class="copy pull-left">&copy; Copyright 2017, <strong>QPID Health</strong></p>
+                <a href="https://www.linkedin.com/company/2901703"><i id="social-li" class="fa fa-linkedin fa-2x social"></i></a>
+                <a href="https://twitter.com/qpidhealth"><i id="social-tw" class="fa fa-twitter fa-2x social"></i></a>
+                <a href="https://www.youtube.com/channel/UCv8vv4W_gpIT6JGtGIbfLeQ"><i id="social-yt" class="fa fa-youtube fa-2x social" aria-hidden="true"></i></a>
+
+            </div>
+        </div>
+    </section>
+</footer>
+</body>
+    <script src="assets/js/main.js"></script>
+</html>
